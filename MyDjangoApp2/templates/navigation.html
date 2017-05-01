@@ -1,0 +1,160 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lokahi Crowdfunding</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #ffffff;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #ffffff;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #734861;
+      color: white;
+      padding: 15px;
+    }
+
+    .btn btn-lg btn-primary {
+        background-color: #734861;
+
+    }
+
+{#    formatting for the search bar#}
+    input.search[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background: white url('searchicon.png') no-repeat 10px 10px;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    input.search[type=text]:focus {
+        width: 100%;
+
+    }
+
+    .navbar-inverse {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+
+        border-bottom-color: #cccccc;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a {
+        background-color: #ffffff;
+        color: #9d9d9d;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+        background-color: #ffffff;
+        color: #555555;
+    }
+
+     .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+         color: #555555;
+     }
+
+     .navbar-inverse .navbar-brand:hover {
+              color: #555555;
+     }
+
+     .navbar-inverse .navbar-toggle {
+         background-color: black;
+         border-color: black;
+     }
+
+     .left{
+         float: left;
+         margin-left: 15%;
+     }
+     .center{
+         margin-left: 5%;
+         margin-right: 5%;
+
+     }
+     .right{
+         float: right;
+         margin-right: 15%;
+     }
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li class="active"><a href="/search">Search</a></li>
+      </ul>
+        <ul class="nav navbar-nav">
+{#            <li class="active"> <form>#}
+{#                <input type="text" class ="search" name="search" placeholder="Search..">#}
+{#                </form> </a>#}
+{#            </li>#}
+        </ul>
+      <ul class="nav navbar-nav navbar-right">
+                      {% if user.is_authenticated %}
+
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+                          {% else %}
+
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span>Register</a></li>
+
+                      {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>

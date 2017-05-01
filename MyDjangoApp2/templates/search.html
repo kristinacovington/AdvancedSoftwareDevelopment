@@ -1,0 +1,284 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lokahi Crowdfunding</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #ffffff;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #ffffff;
+      height: 100%;
+    }
+
+
+
+{#    formatting for the search bar#}
+    input.search[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background: white url('searchicon.png') no-repeat 10px 10px;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    input.search[type=text]:focus {
+        width: 100%;
+
+    }
+
+    .navbar-inverse {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+
+        border-bottom-color: #cccccc;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a {
+        background-color: #ffffff;
+        color: #9d9d9d;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a{
+        color: #555555;
+    }
+
+    .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+        background-color: #2C3A4C;
+        color: white;
+    }
+
+     .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover{
+         color: #2C3A4C;
+     }
+
+     .navbar-inverse .navbar-brand:hover {
+              color: #2C3A4C;
+     }
+
+     .navbar-inverse .navbar-toggle {
+         background-color: black;
+         border-color: black;
+     }
+
+     .left{
+         float: left;
+         margin-left: 15%;
+         color: black;
+     }
+     .center{
+         margin-left: 5%;
+         margin-right: 5%;
+        color: black;
+     }
+     .right{
+         float: right;
+         margin-right: 15%;
+         color: black;
+     }
+     a:hover {
+         text-decoration: none;
+     }
+    .containerdiv {
+        margin: auto;
+        background-color: #2C3A4C;
+        z-index: -1;
+    }
+    .leftdiv {
+        width: 25%;
+        height: 100%;
+        float: left;
+        text-align: left;
+        background-color: #057A77;
+        color: white;
+        text-align: center;
+        margin-left: 25%;
+        padding: 1%;
+
+    }
+    .rightdiv {
+        text-align: left;
+        margin-left: 25%;
+        height: 100%;
+
+    }
+    .welcome{
+        background-color: #2C3A4C;
+        color: white;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      #cover{
+        visibility: hidden;
+       }
+      .leftdiv{
+          width: 100%;
+          margin: 0;
+      }
+      .containerdiv{
+          background-color: white;
+      }
+      .row.content {height:auto;}
+    }
+
+          /* Set black background color, white text and some padding */
+    footer {
+      background-color: white;
+      color: black;
+      padding: 15px;
+      font-size: 20px;
+     border-top: solid #9d9d9d;
+        border-top-width: 2px;
+    }
+    .sidebar{
+        padding: 5%;
+        border-radius: 3%;
+    }
+    .sidebar:hover, sidebar:active{
+        background-color: #2C3A4C;
+    }
+
+
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/home/" style="color: #2C3A4C;">Lokahi Crowdfunding</a>
+    </div>
+    <div class="collapse navbar-collapse" style="background-color: #ffffff" id="myNavbar">
+      <ul class="nav navbar-nav" >
+        <li class="active" ><a href="/home">Home</a></li>
+        <li class="active" ><a href="/profile">Edit Profile</a></li>
+        <li class="active" ><a href="/creategroup">Create a Group</a></li>
+        <li class="active" ><a href="/viewgroups">View Groups</a></li>
+        <li class="active" ><a href="/report/form">Create a Report</a></li>
+        <li class="active" ><a href="/messages">Messages</a></li>
+        <li class="active" ><a href="/search">Search Reports</a></li>
+        <li class="active" ><a href="/report/view">View Reports</a></li>
+
+      </ul>
+        <ul class="nav navbar-nav">
+{#            <li class="active"> <form>#}
+{#                <input type="text" class ="search" name="search" placeholder="Search..">#}
+{#                </form> </a>#}
+{#            </li>#}
+        </ul>
+      <ul class="nav navbar-nav navbar-right">
+                      {% if user.is_authenticated %}
+
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+
+                          {% else %}
+
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span>Register</a></li>
+
+                      {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="welcome"><h2>Search Reports</h2></div>
+      <div class ="col-sm-8 text-center"  style="margin-top: 2%; width: 100%; padding-bottom: 2%;">
+{##}
+{#           <p>Access reports from sqlite database</p>#}
+        <form method="post" action=".">
+            {%  csrf_token %}
+            {{  form.as_table }}
+            <div style="text-align: center">
+                <input class="btn btn-lg btn-primary" style="margin-top:2%;" type="submit" value="search">
+            </div>
+        </form>
+
+        <form method="GET" action=".">
+        {% if results %}
+                {% for item in results %}
+                   <a href="/report/view/{{ item.id }}/"><h3> <b> Report Name:</b> {{ item.report_name }}</h3></a>
+                   <p> <b> Company Name:</b> {{ item.company_name }}</p>
+                   <p> <b> Phone Number: </b> {{ item.phone_number }}</p>
+                   <p> <b> Company Location:</b> {{ item.company_location }}</p>
+                   <p> <b>Company Country:</b> {{ item.company_country }}</p>
+                   <p> <b>Sector:</b> {{ item.sector }}</p>
+                   <p> <b>Industry:</b> {{ item.industry }}</p>
+                   <p> <b>Current Projects:</b> {{ item.current_projects }}</p>
+                {%  endfor %}
+            {% endif %}
+    </form>
+
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+    <a class="left" href="/aboutus" >About Us</a>
+    <a class="center" href="https://github.com/hcd2ha/cs3240-s17-team01" >Github</a>
+    <a class="right" href="/help" >Help</a>
+</footer>
+
+            <script>
+            $("div.leftdiv")
+                .css("margin-left",-$(this).width())
+                .animate({
+                    marginLeft:0
+                }, 1000);
+
+            $("div.welcome")
+                .css("margin-right",-$(this).width())
+                .animate({
+                    marginRight:0
+                }, 750);
+
+            </script>
+
+</body>
+</html>
