@@ -38,6 +38,7 @@ The Heroku repo is located under the /MyDjangoApp2/ folder
 ## Core Features:
 
 A. Accounts and Groups
+
 A Company User can sign up for an account via a webpage. This allows them to interact with the system in the
 Computer User role. Company Users create reports
 2. An Investor User can sign up for an account via a webpage. This allows them to interact with the system in the
